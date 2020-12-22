@@ -1,3 +1,4 @@
+#Realizar un programa que lea cuatro valores numéricos e informar su suma y promedio
 num1 = int(input("ingrese numero uno:"))
 num2 = int(input("ingrese numero dos:"))
 num3 = int(input("ingrese numero tres:"))
