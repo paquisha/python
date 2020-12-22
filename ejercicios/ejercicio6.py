@@ -1,3 +1,4 @@
+#Escribir un programa en el cual se ingresen cuatro números, calcular e informar la suma de los dos primeros y el producto del tercero y el cuarto.
 num1 = int(input("ingrese numero uno:"))
 num2 = int(input("ingrese numero dos:"))
 num3 = int(input("ingree numero tres:"))
