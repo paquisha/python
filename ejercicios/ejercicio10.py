@@ -1,3 +1,4 @@
+#informar numero mayor
 num1 = int(input("ingrese numero uno: "))
 num2 = int(input("ingrese numero dos: "))
 print("numero mayor es: ")

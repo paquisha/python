@@ -1,3 +1,4 @@
+#Realizar un programa que pida cargar una fecha cualquiera, luego verificar si dicha fecha corresponde a Navidad.
 dia = int(input("ingrese el dia: "))
 mes = int(input("ingrese el mes: "))
 anio = int(input("ingrese el a;o: "))

@@ -1,3 +1,4 @@
+#Se cargan por teclado tres números distintos. Mostrar por pantalla el mayor de ellos.
 num1 = int(input("ingrese numero uno: "))
 num2 = int(input("ingrese numero dos: "))
 num3 = int(input("ingrese numero tres: "))

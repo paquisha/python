@@ -1,3 +1,4 @@
+#Escribir un programa en el cual: dada una lista de tres valores numéricos distintos se calcule e informe su rango de variación (debe mostrar el mayor y el menor de ellos)
 num1 = int(input("ingrese numero uno: "))
 num2 = int(input("ingrese numero dos: "))
 num3 = int(input("ingrese numero tres: "))

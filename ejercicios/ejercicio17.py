@@ -1,3 +1,4 @@
+#Confeccionar un programa que permita cargar un número entero positivo de hasta tres cifras y muestre un mensaje indicando si tiene 1, 2, o 3 cifras. Mostrar un mensaje de error si el número de cifras es mayor.
 num = int(input("ingrese numero: "))
 if num > 0: 
     if num < 10 :

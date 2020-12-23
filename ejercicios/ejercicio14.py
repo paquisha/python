@@ -1,3 +1,4 @@
+#calculadora de notas
 nota1 = float(input("ingrese nota 1 :"))
 nota2 = float(input("ingrese nota 2 :"))
 nota3 = float(input("ingrese nota 3: "))
