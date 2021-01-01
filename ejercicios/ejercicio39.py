@@ -5,7 +5,7 @@
 
 numero = int(input("cuantos triangulos revisara:"))
 cantidad = 0
-for f in range(n):
+for f in range(numero):
     base = int(input("Ingrese valor de la base: "))
     altura = int(input("Ingrese el valor de la altura: "))
     superficie = base * altura / 2
