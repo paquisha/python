@@ -5,7 +5,9 @@ tallas = []
 residencias = []
 emails = []
 precios = []
+descuentos = []
 cantidades_vendidas = []
+descuentoGuayaquil = 30
 
 while True:
     print("""
@@ -60,9 +62,9 @@ Seleccione: """)
         menos_vendido = cantidades_vendidas[0]
         con_mas_ingresos = cantidades_vendidas[0] * precios[0]
         con_menos_ingresos = cantidades_vendidas[0] * precios[0]
-        print("+--------------------+---------+---------+--------------------+--------------------+----------+----------+----------+")
-        print("|NOMBRE              |EDAD     |TALLA    |RESIDENCIA          |EMAIL               |CANT.     |PRECIO    |IMPORTE   |")
-        print("+--------------------+---------+---------+--------------------+--------------------+----------+----------+----------+")
+        print("+--------------------+---------+---------+--------------------+--------------------+----------+----------+----------+-----------+")
+        print("|NOMBRE              |EDAD     |TALLA    |RESIDENCIA          |EMAIL               |CANT.     |PRECIO    |V.RECAUDADO|V.AGREGADO|")
+        print("+--------------------+---------+---------+--------------------+--------------------+----------+----------+-----------+----------+")
         indice = 0
         total = 0
         while indice < len(nombres):
@@ -74,9 +76,9 @@ Seleccione: """)
             precio = precios[indice]
             cantidad_vendida = cantidades_vendidas[indice]
             importe = precio * cantidad_vendida
-            print("|{:<20}|{:>10}|{:>10}{:<20}|{:<20}|{:>10.2f}|{:>10.2f}|{:>10.2f}|".format(
+            print("|{:<20}|{:>9}|{:>9}|{:<20}|{:<20}|{:>10.2f}|{:>10.2f}|{:>10.2f}|".format(
                 nombre, edad, talla, residencia, email, cantidad_vendida, precio, importe))
-            print("+--------------------+----------+----------+----------+")
+            print("+--------------------+----------+----------+--------------------+--------------------+----------+----------+----------+----------+")
             if cantidad_vendida > mas_vendido:
                 mas_vendido = cantidad_vendida
                 articulo_mas_vendido = nombre
@@ -118,5 +120,3 @@ Seleccione: """)
     elif eleccion == "5":
         if input("Seguro (s/n): ") == "s":
             sys.exit()
-
-    
