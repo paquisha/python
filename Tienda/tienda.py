@@ -8,6 +8,15 @@ precios = []
 descuentos = []
 cantidades_vendidas = []
 descuentoGuayaquil = 30
+prendaUno = 10
+prendaDos = 20
+prendaTres = 30
+contadorPrendaUno = 0
+contadorPrendaDos = 0
+contadorPrendaTres = 0
+contadorPersonasGuayaquil= 0
+contadorPersonas = 0
+restoPais = 3
 
 while True:
     print("""
@@ -17,51 +26,95 @@ while True:
 """)
     eleccion = input("""
 1 - Ingrese datos
-2 - Hacer una venta
+2 - Estadisticas
 3 - Mostrar información
-4 - Borrar un artículo
-5 - Salir
+4 - Salir
 Seleccione: """)
     if eleccion == "1":
         nombre = input("Ingrese nombre: ")
         edad = input("Ingrese edad: ")
-        talla = input("Ingrese tallas: ")
+        talla = input("Ingrese talla: ")
         residencia = input("Ingrese lugar de residencia: ")
-        email = input("Ingrese email: ")
-        precio = float(input("Precio del producto: "))
-        cantidad_vendida = 0.0
+        email = input("Ingrese correo electronico: ")
         nombres.append(nombre)
         edades.append(edad)
         tallas.append(talla)
         residencias.append(residencia)
         emails.append(email)
-        precios.append(precio)
+        print("""
+        =========================
+        1 - prendaUno = $10
+        2 - prendaDos = $20
+        3 - prendaTres = $30
+        =========================
+        """)
+        opcion = input("Escoja numero de prenda: ")
+        cantidad = float(input("Ingrese cantidad: "))
+
+        cantidad_vendida = 0.0
+
+        if opcion == "1":
+            if residencia.lower() == "guayaquil":
+                descuento = prendaUno * (descuentoGuayaquil/100)
+                total = prendaUno - descuento
+                print("valor total: ")
+                print(total)
+                contadorPersonasGuayaquil = contadorPersonasGuayaquil + 1
+            else:
+                total = prendaUno * cantidad
+                print("valor total: ")
+                print(total)
+                contadorPersonas = contadorPersonas + 1
+            contadorPrendaUno = contadorPrendaUno + 1
+        elif opcion == "2":
+            if residencia.lower() == "guayaquil":
+                descuento = prendaDos * (descuentoGuayaquil/100)
+                total = prendaDos - descuento
+                print("valor total: ")
+                print(total)
+                contadorPersonasGuayaquil = contadorPersonasGuayaquil + 1
+            else:
+                total = prendaDos * cantidad
+                print("valor total: ")
+                print(total)
+                contadorPersonas = contadorPersonas + 1
+            contadorPrendaDos = contadorPrendaDos + 1
+        elif opcion == "3":
+            if residencia.lower() == "guayaquil":
+                descuento = prendaTres * (descuentoGuayaquil/100)
+                total = prendaTres - descuento
+                print("valor total: ")
+                print(total)
+                contadorPersonasGuayaquil = contadorPersonasGuayaquil + 1
+            else:
+                total = prendaTres * cantidad
+                print("valor total: ")
+                print(total)
+                contadorPersonas = contadorPersonas + 1
+            contadorPrendaDos = contadorPrendaTres + 1
+        else:
+            print("opcion invalida")
+        precios.append(total)
         cantidades_vendidas.append(cantidad_vendida)
     elif eleccion == "2":
-        nombre_articulo = input("Nombre del artículo que se vende: ")
-        if nombre_articulo in nombres:
-            cantidad = float(input("Cantidad vendida: "))
-            indice = nombres.index(nombre_articulo)
-            precio = precios[indice]
-            cantidades_vendidas[indice] += cantidad
-            print(
-                f"Se vende(n) {cantidad} {nombre_articulo}. Total: {cantidad * precio}")
+        print("estadisticas")
+        print(f"cantidad de personas que obtuvieron descuento {contadorPersonasGuayaquil}\n")
+        print(f"cantidad de personas que viven en guayaquil {contadorPersonasGuayaquil}\n")
+        print(f"cantidad de personas que no residen en guayaquil {contadorPersonas}\n")
+        print(f"talla mas vendida {contadorPersonas}\n")
+        if contadorPrendaUno > contadorPrendaDos and contadorPrendaUno > contadorPrendaTres:
+            print(f"prenda mas vendida, se vendio: {contadorPrendaUno} unidades\n")
+            print(f"talla mas vendida uno {contadorPrendaUno}\n")
+        elif contadorPrendaDos > contadorPrendaTres:
+            print(f"prenda mas vendida, se vendio: {contadorPrendaDos} unidades\n")
+            print(f"talla mas vendida dos {contadorPrendaDos}\n")
         else:
-            print("El artículo no existe")
+            print(f"prenda mas vendida, se vendio: {contadorPrendaTres} unidades\n")
+            print(f"talla mas vendida tres {contadorPrendaTres}\n")
     elif eleccion == "3":
         if len(nombres) <= 0:
             print("No hay artículos")
             continue
-        # Los nombres de artículos
-        articulo_mas_vendido = nombres[0]
-        articulo_menos_vendido = nombres[0]
-        articulo_con_mas_ingresos = nombres[0]
-        articulo_con_menos_ingresos = nombres[0]
-        # Pero también necesitamos el conteo. Simplemente los inicializamos en un elemento del arreglo
-        mas_vendido = cantidades_vendidas[0]
-        menos_vendido = cantidades_vendidas[0]
-        con_mas_ingresos = cantidades_vendidas[0] * precios[0]
-        con_menos_ingresos = cantidades_vendidas[0] * precios[0]
         print("+--------------------+---------+---------+--------------------+--------------------+----------+----------+----------+-----------+")
         print("|NOMBRE              |EDAD     |TALLA    |RESIDENCIA          |EMAIL               |CANT.     |PRECIO    |V.RECAUDADO|V.AGREGADO|")
         print("+--------------------+---------+---------+--------------------+--------------------+----------+----------+-----------+----------+")
@@ -79,44 +132,8 @@ Seleccione: """)
             print("|{:<20}|{:>9}|{:>9}|{:<20}|{:<20}|{:>10.2f}|{:>10.2f}|{:>10.2f}|".format(
                 nombre, edad, talla, residencia, email, cantidad_vendida, precio, importe))
             print("+--------------------+----------+----------+--------------------+--------------------+----------+----------+----------+----------+")
-            if cantidad_vendida > mas_vendido:
-                mas_vendido = cantidad_vendida
-                articulo_mas_vendido = nombre
-            if cantidad_vendida < menos_vendido:
-                menos_vendido = cantidad_vendida
-                articulo_menos_vendido = nombre
-            if importe > con_mas_ingresos:
-                con_mas_ingresos = importe
-                articulo_con_mas_ingresos = nombre
-            if importe < con_menos_ingresos:
-                con_menos_ingresos = importe
-                articulo_con_menos_ingresos = nombre
             total += importe
             indice += 1
-
-        print(
-            "|--------------------|----------|----------|--------------------|--------------------|----------|----------|----------|TOTAL:    |{:>10.2f}|".format(total))
-        print("+--------------------+----------+----------+--------------------+--------------------+----------+----------+----------+")
-        print(
-            f"Artículo más vendido: {articulo_mas_vendido}, con {mas_vendido} unidades")
-        print(
-            f"Artículo menos vendido: {articulo_menos_vendido}, con {menos_vendido} unidades")
-        print(
-            f"Artículo con más ingresos: {articulo_con_mas_ingresos}, con {con_mas_ingresos} euros")
-        print(
-            f"Artículo con menos ingresos: {articulo_con_menos_ingresos}, con {con_menos_ingresos} euros")
     elif eleccion == "4":
-        nombre_articulo = input("Nombre del artículo que se elimina: ")
-        if nombre_articulo in nombres:
-            indice = nombres.index(nombre_articulo)
-            del nombres[indice]
-            del precios[indice]
-            del cantidades_vendidas[indice]
-            print(f"Se elimina {nombre_articulo}")
-        else:
-            print("El artículo no existe")
-
-
-    elif eleccion == "5":
         if input("Seguro (s/n): ") == "s":
             sys.exit()
