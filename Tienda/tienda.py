@@ -16,7 +16,8 @@ contadorPrendaDos = 0
 contadorPrendaTres = 0
 contadorPersonasGuayaquil= 0
 contadorPersonas = 0
-restoPais = 3
+restoPais = 6
+envioGuayaquil = 3
 
 while True:
     print("""
@@ -51,7 +52,7 @@ Seleccione: """)
         opcion = input("Escoja numero de prenda: ")
         cantidad = float(input("Ingrese cantidad: "))
 
-        cantidad_vendida = 0.0
+        #cantidad_vendida = 0.0
 
         if opcion == "1":
             if residencia.lower() == "guayaquil":
@@ -95,7 +96,7 @@ Seleccione: """)
         else:
             print("opcion invalida")
         precios.append(total)
-        cantidades_vendidas.append(cantidad_vendida)
+        cantidades_vendidas.append(cantidad)
     elif eleccion == "2":
         print("estadisticas")
         print(f"cantidad de personas que obtuvieron descuento {contadorPersonasGuayaquil}\n")
@@ -129,8 +130,12 @@ Seleccione: """)
             precio = precios[indice]
             cantidad_vendida = cantidades_vendidas[indice]
             importe = precio * cantidad_vendida
-            print("|{:<20}|{:>9}|{:>9}|{:<20}|{:<20}|{:>10.2f}|{:>10.2f}|{:>10.2f}|".format(
-                nombre, edad, talla, residencia, email, cantidad_vendida, precio, importe))
+            if residencia.lower() == "guayaquil":
+                valorAgregado = envioGuayaquil
+            else:
+                valorAgregado = restoPais
+            print("|{:<20}|{:>9}|{:>9}|{:<20}|{:<20}|{:>10.2f}|{:>10.2f}|{:>10.2f}|{:>10.2f}|".format(
+                nombre, edad, talla, residencia, email, cantidad_vendida, precio, importe, valorAgregado))
             print("+--------------------+----------+----------+--------------------+--------------------+----------+----------+----------+----------+")
             total += importe
             indice += 1
